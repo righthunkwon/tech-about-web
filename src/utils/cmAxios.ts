@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const cmAxios = axios.create({
-  baseURL: '',
+  baseURL: import.meta.env.VITE_LCL_API_URL,
   withCredentials: true,
 });
 
