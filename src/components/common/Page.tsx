@@ -8,7 +8,9 @@ interface props {
 const Page: React.FC<props> = ({ children, className = '' }) => {
   return (
     <>
-      <div className={`min-h-[calc(100vh-15px)] ${className}`}>{children}</div>
+      <div className={`min-h-[calc(100vh-3.75rem)] ${className}`}>
+        {children}
+      </div>
     </>
   );
 };
