@@ -14,7 +14,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="bg-ta-base border-ta-divider fixed top-0 z-100 mx-auto flex h-15 w-full justify-center border-b">
+      <header className="ta-header bg-ta-base border-ta-divider fixed top-0 z-100 mx-auto flex h-15 w-full justify-center border-b">
         <nav className="ta-content flex justify-between px-4">
           <Link to="/" className="flex items-center gap-1 px-2">
             <img className="h-6 w-6" src={logo} alt="logo" />

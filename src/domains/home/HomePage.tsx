@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
 
           <div className="flex h-80 flex-1 flex-col px-4 md:flex-1/2">
             <div className="flex-1 md:pr-8 lg:pr-16">
-              <h2 className="text-ta-black mb-2 line-clamp-3 pt-6 text-xl leading-tight font-semibold md:mb-4 md:text-3xl">
+              <h2 className="text-ta-base-title mb-2 line-clamp-3 pt-6 text-xl leading-tight font-semibold md:mb-4 md:text-3xl">
                 {curr.pstg_ttl}
               </h2>
               <p className="text-ta-base-content line-clamp-3 text-sm md:text-base">
@@ -92,13 +92,13 @@ const HomePage: React.FC = () => {
             <div className="mt-24 flex gap-3 text-center md:mt-0">
               <button
                 onClick={onClickPrev}
-                className="h-12 w-12 rounded-full bg-gray-100 p-2 hover:cursor-pointer hover:brightness-90"
+                className="bg-ta-svg h-12 w-12 rounded-full p-2 hover:cursor-pointer hover:brightness-90"
               >
                 <img src={left} alt="prev" />
               </button>
               <button
                 onClick={onClickNext}
-                className="h-12 w-12 rounded-full bg-gray-100 p-2 hover:cursor-pointer hover:brightness-90"
+                className="bg-ta-svg h-12 w-12 rounded-full p-2 hover:cursor-pointer hover:brightness-90"
               >
                 <img src={right} alt="next" />
               </button>
