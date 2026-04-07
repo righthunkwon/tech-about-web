@@ -10,7 +10,7 @@ const MENU_ITEMS = [
 const HeaderNavbarMenu: React.FC = () => {
   return (
     <>
-      <ul className="text-ta-black-light my-auto hidden sm:flex">
+      <ul className="text-ta-base-content my-auto hidden sm:flex">
         {MENU_ITEMS.map((item) => (
           <li key={item.id}>
             <Link className="ta-nav-menu-item" to={item.path}>

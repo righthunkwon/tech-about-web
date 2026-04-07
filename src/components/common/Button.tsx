@@ -28,7 +28,7 @@ const Button: React.FC<props> = ({
       case 'outline':
         return `ta-button-outline ${className}`;
       default:
-        return `ta-button-default ${className}`;
+        return `ta-button-primary ${className}`;
     }
   };
   const buttonStyle = getButtonStyle();

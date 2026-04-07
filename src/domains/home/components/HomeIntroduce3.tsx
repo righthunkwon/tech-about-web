@@ -36,9 +36,9 @@ const HomeIntroduce3: React.FC = () => {
 
   return (
     <>
-      <section className="bg-ta-blue flex min-h-[calc(50vh)] flex-col items-center justify-between py-16 pt-32 sm:min-h-[calc(100vh)] sm:pt-48">
+      <section className="bg-ta-primary flex min-h-[calc(50vh)] flex-col items-center justify-between py-16 pt-32 sm:min-h-[calc(100vh)] sm:pt-48">
         <div className="mx-auto flex-1 text-center">
-          <div className="my-8 px-12 text-xl leading-normal font-semibold text-white sm:my-12 sm:text-3xl sm:leading-tight">
+          <div className="text-ta-primary-content my-8 px-12 text-xl leading-normal font-semibold sm:my-12 sm:text-3xl sm:leading-tight">
             <span className="block">어려운 다국어 처리, </span>
             <span className="block sm:py-2">
               메뉴, 버튼, 라벨, 메시지별로 쉽게.

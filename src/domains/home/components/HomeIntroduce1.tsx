@@ -68,7 +68,7 @@ const HomeIntroduce1: React.FC = () => {
             {/* 1. 기능 페이지로 이동 */}
             <button
               onClick={onClickStart}
-              className="bg-ta-blue hover:bg-ta-blue-dark rounded-lg px-4 py-2 text-white hover:cursor-pointer"
+              className="bg-ta-primary hover:bg-ta-primary-dark text-ta-primary-content rounded-lg px-4 py-2 hover:cursor-pointer"
             >
               시작하기
             </button>
@@ -77,7 +77,7 @@ const HomeIntroduce1: React.FC = () => {
             {/* 2. 최신버전 다운로드 */}
             {/* <button
               onClick={onClickDownload}
-              className="bg-ta-blue hover:bg-ta-blue-dark rounded-lg px-4 py-2 text-white hover:cursor-pointer"
+              className="bg-ta-primary hover:bg-ta-primary-dark rounded-lg px-4 py-2 text-ta-primary-content hover:cursor-pointer"
             >
               다운로드
             </button> */}

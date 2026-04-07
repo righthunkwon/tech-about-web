@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const HomeIntroduce4: React.FC = () => {
   return (
     <>
-      <section className="min-h-[calc(50vh)] bg-white py-16 text-black sm:min-h-[calc(100vh)] sm:py-20">
+      <section className="bg-ta-base min-h-[calc(50vh)] py-16 text-black sm:min-h-[calc(100vh)] sm:py-20">
         <div className="c-content justify-center gap-8 p-4 lg:flex">
           {/* 
           **********************************************************************************
@@ -25,10 +25,10 @@ const HomeIntroduce4: React.FC = () => {
           <div className="flex flex-1 flex-col gap-4">
             {/* 카드1 */}
             <div className="rounded-lg bg-gray-100 px-8 py-12 sm:px-16">
-              <div className="text-ta-gray-dark mb-2 text-2xl font-bold">
+              <div className="text-ta-subtext-dark mb-2 text-2xl font-bold">
                 온말 표준데이터
               </div>
-              <div className="text-ta-gray-dark mb-6 text-sm font-medium">
+              <div className="text-ta-subtext-dark mb-6 text-sm font-medium">
                 <Link
                   to={
                     'https://www.data.go.kr/bbs/rcr/selectRecsroomList.do?pageIndex=1&originId=&atchFileId=&searchCondition3=&searchCondition2=2&cndCtgryLaword=N&cndCtgryEdc=N&cndCtgryBigdata=N&cndCtgryStd=Y&cndCtgryNews=N&cndCtgryContest=&cndCtgryEtc=N&cndCtgryCardNews=&bindCndCtgry=PDTY04&sort-post=2&searchKeyword1=&Std=PDTY04'
@@ -59,7 +59,7 @@ const HomeIntroduce4: React.FC = () => {
               <div className="mb-2 text-2xl font-bold">
                 온말 다국어 (준비 중)
               </div>
-              <div className="text-ta-gray-dark mb-6 text-sm font-medium">
+              <div className="text-ta-subtext-dark mb-6 text-sm font-medium">
                 <div>
                   번역기로는 만족스럽지 않은 당신을 위해,
                   <span className="md:block">
@@ -68,7 +68,7 @@ const HomeIntroduce4: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className="text-ta-gray pointer-events-none text-sm font-semibold">
+              <div className="text-ta-subtext pointer-events-none text-sm font-semibold">
                 <Link
                   to={'/start-i18n'}
                   className="my-auto font-semibold hover:cursor-pointer hover:underline"

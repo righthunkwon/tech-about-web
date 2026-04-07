@@ -13,7 +13,7 @@ const SamplePage: React.FC = () => {
       <Page className="ta-content mx-auto p-6">
         <h1 className="text-ta-black text-4xl font-semibold">컴포넌트 샘플</h1>
         <div className="mx-4 my-8">
-          <h2 className="text-ta-black-light my-4 text-2xl font-semibold">
+          <h2 className="text-ta-base-content my-4 text-2xl font-semibold">
             버튼
           </h2>
 
@@ -37,7 +37,7 @@ const SamplePage: React.FC = () => {
             <Link
               // 3. 버튼(link)
               to="/"
-              className="ta-button-default"
+              className="ta-button-primary"
             >
               버튼(Link)
             </Link>

@@ -1,69 +1,34 @@
 @import 'tailwindcss';
 
 @theme {
-  /* blue */
-  --color-ta-blue: rgb(49, 130, 246); /* #3182F6 */
-  --color-ta-blue-dark: rgb(27, 100, 218); /* #1B64DA */
-  --color-ta-blue-light: rgb(81, 162, 255); /* #51a2ff */
+  /* [1] BRAND PALETTE - Hex 형식 */
+  --color-ta-blue: #3182f6;
+  --color-ta-blue-dark: #1b64da;
+  --color-ta-blue-light: #51a2ff;
+  --color-ta-gray-dark: #333d48;
+  --color-ta-gray: #8b95a1;
+  --color-ta-gray-light: #d1d6db;
+  --color-ta-black: #000000;
+  --color-ta-black-light: #4e5958;
+  --color-ta-svg: #b0b8c1;
 
-  /* gray */
-  --color-ta-svg: rgb(176, 184, 193); /* #B0B8C1 */
-  --color-ta-gray: rgb(139, 149, 161); /* #8B95A1 */
-  --color-ta-gray-dark: rgb(51, 60, 72); /* #333D48 */
-  --color-ta-gray-light: rgb(209, 214, 219); /* #D1D6DB */
+  /* [2] SEMANTIC COLORS - 기본값 */
+  --color-ta-base: #ffffff;
+  --color-ta-base-title: #000000;
+  --color-ta-base-content: var(--color-ta-black-light);
 
-  /* black */
-  --color-ta-black: rgb(0, 0, 0); /* #4E5958 */
-  --color-ta-black-light: rgb(78, 89, 88); /* #4E5958 */
-}
+  --color-ta-surface: #f9fafb;
+  --color-ta-divider: var(--color-ta-gray-light);
+  --color-ta-subtext: var(--color-ta-gray);
 
-@layer base {
-  html,
-  body {
-    @apply m-0 p-0 text-[#333c48]; /* 기본 폰트색 : ta-black-light */
-    font-family: 'Pretendard Variable';
-  }
-}
+  --color-ta-primary: var(--color-ta-blue);
+  --color-ta-primary-content: #ffffff;
 
-@layer components {
-  .ta-layout {
-    @apply min-h-[calc(100vh)]; /* 기본 높이: viewport */
-  }
-
-  .ta-content {
-    @apply mx-auto w-full max-w-[1140px]; /* 최대 넓이: 1140px → 전체 넓이를 적용해야 하는 배경을 제외 요소 최상단에 사용 */
-  }
-
-  /* .ta-nav-menu-list {
-    @apply active:bg-ta-gray-light mx-2 my-auto block cursor-pointer rounded-lg px-5 py-3 whitespace-nowrap hover:bg-gray-100;
-  } */
-
-  .ta-nav-menu-item {
-    @apply active:bg-ta-gray-light text-ta-black-light mx-2 my-auto block cursor-pointer rounded-lg px-5 py-3 text-sm font-normal whitespace-nowrap hover:bg-gray-100;
-  }
-
-  .ta-drawer-menu-item {
-    @apply active:bg-ta-gray-light text-ta-black-light z-99 my-auto cursor-pointer text-sm font-medium whitespace-nowrap hover:bg-gray-100;
-  }
-
-  .ta-button-default {
-    @apply block w-fit rounded-lg px-4 py-2 text-base font-medium transition-all sm:text-lg;
-    @apply bg-ta-blue hover:bg-ta-blue-dark text-white hover:cursor-pointer;
-  }
-
-  .ta-button-outline {
-    @apply block w-fit rounded-lg px-4 py-2 text-base font-medium transition-all sm:text-lg;
-    @apply text-ta-blue border-ta-gray-light hover:text-ta-blue-dark hover:border-ta-gray border-1 bg-white hover:cursor-pointer;
-  }
-
-  .ta-button-disabled {
-    @apply block w-fit rounded-lg px-4 py-2 text-base font-medium transition-all sm:text-lg;
-    @apply bg-ta-gray-light pointer-events-none text-white select-none;
-  }
-}
-
-@theme {
+  /* [3] ANIMATIONS & KEYFRAMES */
   --animate-fade-in: fade-in 1.2s ease-in-out forwards;
+  --animate-bounce-small: bounce-small 1.5s ease-in-out infinite;
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+
   @keyframes fade-in {
     0% {
       opacity: 0;
@@ -75,8 +40,6 @@
       opacity: 1;
     }
   }
-
-  --animate-bounce-small: bounce-small 1.5s ease-in-out infinite;
   @keyframes bounce-small {
     0%,
     100% {
@@ -88,8 +51,6 @@
       opacity: 0.2;
     }
   }
-
-  --animate-wiggle: wiggle 1s ease-in-out infinite;
   @keyframes wiggle {
     0%,
     100% {
@@ -98,5 +59,93 @@
     50% {
       transform: rotate(3deg);
     }
+  }
+}
+
+/* [4] DARK MODE - 버튼 블랙(#000000) & 화이트(#FFFFFF) 고정 */
+:root.dark {
+  --color-ta-base: #121212;
+  --color-ta-base-title: #ffffff;
+  --color-ta-base-content: #d1d6db;
+
+  --color-ta-surface: #1e1e1e;
+  --color-ta-divider: var(--color-ta-gray-dark);
+  --color-ta-subtext: var(--color-ta-gray-light);
+
+  --color-ta-primary: #000000;
+  --color-ta-primary-content: #ffffff;
+}
+
+@layer base {
+  html,
+  body {
+    @apply m-0 p-0 transition-colors duration-300;
+    background-color: var(--color-ta-base);
+    color: var(--color-ta-base-content);
+    font-family: 'Pretendard Variable', sans-serif;
+  }
+}
+
+@layer components {
+  /* 레이아웃 */
+  .ta-layout {
+    @apply min-h-screen;
+  }
+  .ta-content {
+    @apply mx-auto w-full max-w-[1140px];
+  }
+
+  /* 네비게이션 아이템 */
+  .ta-nav-menu-item,
+  .ta-drawer-menu-item {
+    @apply mx-1 my-auto block cursor-pointer rounded-lg px-4 py-2 text-sm font-normal whitespace-nowrap transition-all;
+    @apply hover:bg-gray-100;
+    color: var(--color-ta-base-content);
+  }
+  .dark .ta-nav-menu-item:hover,
+  .dark .ta-drawer-menu-item:hover {
+    background-color: var(--color-ta-surface);
+  }
+
+  /* 메인 버튼 (Primary) - 오류 수정 및 패딩 복구 */
+  .ta-button-primary {
+    @apply inline-block w-fit cursor-pointer rounded-lg px-4 py-2 sm:px-6 sm:py-2.5;
+    @apply text-center text-base font-medium no-underline transition-all sm:text-lg;
+    background-color: var(--color-ta-primary);
+    color: var(--color-ta-primary-content);
+    /* 다크모드 가독성 보더 */
+    @apply dark:border-ta-divider dark:border;
+  }
+
+  .ta-button-primary:hover {
+    /* bg-ta-blue-dark 오류 해결: 변수를 직접 참조하거나 유틸리티 명칭 확인 */
+    background-color: var(--color-ta-blue-dark);
+    @apply opacity-90;
+  }
+
+  .dark .ta-button-primary:hover {
+    background-color: var(--color-ta-gray-dark);
+  }
+
+  /* 아웃라인 버튼 */
+  .ta-button-outline {
+    @apply inline-block w-fit cursor-pointer rounded-lg border-1 px-4 py-2 sm:px-6 sm:py-2.5;
+    @apply text-center text-base font-medium no-underline transition-all sm:text-lg;
+    border-color: var(--color-ta-divider);
+    background-color: transparent;
+    color: var(--color-ta-primary);
+  }
+  .ta-button-outline:hover {
+    border-color: var(--color-ta-primary);
+    background-color: var(--color-ta-surface);
+  }
+
+  /* 비활성화 버튼 */
+  .ta-button-disabled {
+    @apply pointer-events-none inline-block w-fit rounded-lg px-4 py-2 select-none sm:px-6 sm:py-2.5;
+    @apply text-center text-base font-medium sm:text-lg;
+    background-color: var(--color-ta-divider);
+    color: #ffffff;
+    opacity: 0.6;
   }
 }

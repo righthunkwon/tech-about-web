@@ -26,7 +26,7 @@ const HeaderDrawerMenu: React.FC<Props> = ({ open, setOpen }) => {
       </button>
 
       <div
-        className={`fixed left-0 w-full bg-white shadow-lg transition-all duration-400 ${open ? 'top-15 opacity-100' : 'pointer-events-none top-15 -translate-y-2 opacity-0'}`}
+        className={`bg-ta-base fixed left-0 w-full shadow-lg transition-all duration-400 ${open ? 'top-15 opacity-100' : 'pointer-events-none top-15 -translate-y-2 opacity-0'}`}
       >
         <ul className="flex flex-col border-t border-gray-100">
           {MENU_ITEMS.map((item) => (
