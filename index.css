@@ -79,7 +79,7 @@
 @layer base {
   html,
   body {
-    @apply m-0 p-0 transition-colors duration-300;
+    @apply m-0 p-0 transition-colors duration-200;
     background-color: var(--color-ta-base);
     color: var(--color-ta-base-content);
     font-family: 'Pretendard Variable', sans-serif;
@@ -93,6 +93,12 @@
   }
   .ta-content {
     @apply mx-auto w-full max-w-[1140px];
+  }
+
+  header {
+    transition:
+      background-color 150ms ease-in-out,
+      border-color 150ms ease-in-out;
   }
 
   /* 네비게이션 아이템 */
