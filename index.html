@@ -3,6 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // 다크모드인지 라이트모드인지를 판단하는 즉시실행함수
+      (() => {
+        try {
+          const taTheme = localStorage.getItem('ta-theme');
+          const taThemeDark = taTheme === 'dark';
+          const osThemeDark = window.matchMedia(
+            '(prefers-color-scheme: dark)',
+          ).matches;
+
+          const isDark = taThemeDark || (!taTheme && osThemeDark);
+          document.documentElement.classList.toggle('dark', isDark);
+        } catch (e) {
+          console.error('error =>', e);
+        }
+      })();
+    </script>
     <link href="./index.css" rel="stylesheet" />
     <link
       rel="stylesheet"
@@ -11,7 +28,7 @@
       href="https:/cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
     />
     <link rel="icon" href="/src/assets/favicon.ico" />
-    <title>온말</title>
+    <title>tech-about</title>
   </head>
   <body>
     <div id="root"></div>
