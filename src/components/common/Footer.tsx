@@ -6,7 +6,7 @@ import notion from '@/assets/svgs/btn-notion.svg';
 const Footer: React.FC = () => {
   return (
     <>
-      <footer className="bg-ta-gray-dark text-ta-primary-content z-100 w-full p-8 text-sm sm:p-12 sm:text-base">
+      <footer className="bg-ta-gray-dark text-ta-primary-content border-t-ta-divider z-100 w-full border-t-1 p-8 text-sm sm:p-12 sm:text-base">
         <div className="mx-auto max-w-[1140px] sm:p-4">
           <ul className="pb-8 pl-1">
             <li className="mb-3 font-bold">서비스</li>
@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
                   'https://www.notion.so/righthun/dd055ee9f54445e89cd84d755071f7bd'
                 }
                 target="_blank"
-                className="text-ta-subtext-light py-2 pr-4 hover:brightness-80"
+                className="text-ta-gray-light py-2 pr-4 hover:brightness-80"
               >
                 소개
               </Link>
@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
             </li> */}
             <li className="py-2">
               <Link
-                className="text-ta-subtext-light py-2 pr-4 hover:brightness-80"
+                className="text-ta-gray-light py-2 pr-4 hover:brightness-80"
                 to={'/support'}
               >
                 문의하기
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
               </Link>
             </li> */}
           </ul>
-          <div className="text-ta-subtext my-4 text-xs">
+          <div className="text-ta-gray-light my-4 text-xs">
             Copyright 2026. 권정훈 all rights reserved.
           </div>
         </div>

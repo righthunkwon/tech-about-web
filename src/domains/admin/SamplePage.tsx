@@ -11,7 +11,9 @@ const SamplePage: React.FC = () => {
   return (
     <>
       <Page className="ta-content mx-auto p-6">
-        <h1 className="text-ta-black text-4xl font-semibold">컴포넌트 샘플</h1>
+        <h1 className="text-ta-base-title text-4xl font-semibold">
+          컴포넌트 샘플
+        </h1>
         <div className="mx-4 my-8">
           <h2 className="text-ta-base-content my-4 text-2xl font-semibold">
             버튼
@@ -20,7 +22,7 @@ const SamplePage: React.FC = () => {
           <div className="flex flex-wrap gap-2">
             <Button
               // 1. 버튼(default)
-              variant="default"
+              variant="default" //option
               onClick={() => {
                 alert('clicked');
               }}
@@ -29,22 +31,22 @@ const SamplePage: React.FC = () => {
             </Button>
             <Button
               // 2. 버튼(outline)
-              variant="outline" // 명시
+              variant="outline" //required
               onClick={() => alert('clicked')}
             >
               버튼(outline)
             </Button>
             <Link
               // 3. 버튼(link)
-              to="/"
-              className="ta-button-primary"
+              to="/" //required
+              className="ta-button-primary" //required
             >
               버튼(Link)
             </Link>
             <Button
               // 4. 버튼(disabled)
               onClick={() => alert('clicked')}
-              disabled={disabled} // 명시 필수
+              disabled={disabled} //required
             >
               버튼(disabled)
             </Button>

@@ -10,10 +10,10 @@ const NotFoundPage: React.FC = () => {
     <>
       <Page className="flex flex-col items-center text-center">
         <div className="mt-60 mb-6">
-          <div className="text-ta-base-content my-2 text-2xl leading-tight font-semibold sm:text-3xl">
+          <div className="text-ta-base-title my-2 text-2xl leading-tight font-semibold sm:text-3xl">
             페이지를 찾지 못했습니다
           </div>
-          <div className="text-ta-subtext-dark text-sm sm:text-base">
+          <div className="text-ta-base-content text-sm sm:text-base">
             페이지 주소가 정확한지 확인해주세요
           </div>
         </div>
