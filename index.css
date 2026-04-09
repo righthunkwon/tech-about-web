@@ -13,7 +13,8 @@
   --color-ta-gray: #8b95a1; /* 회색 */
   --color-ta-gray-dark: #333d48; /* 어두운 회색 */
   --color-ta-gray-light: #d1d6db; /* 밝은 회색 */
-  --color-ta-svg: #f3f4f6; /* 밝은 회색(svg) */
+  --color-ta-svg: #f3f4f6; /* 밝은 회색(svg 배경) */
+  --color-ta-svg-line: #8b95a1; /* 밝은 회색(svg 선) */
 
   --color-ta-black: #000000; /* 검은색 */
   --color-ta-black-light: #4e5958; /* 밝은 검정색 */

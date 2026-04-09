@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '@/hooks/useTheme';
 import dark from '@/assets/svgs/btn-dark.svg';
 import light from '@/assets/svgs/btn-light.svg';
+import timer from '@/assets/svgs/btn-timer.svg';
 
 const MENU_ITEMS = [
   { id: '1', label: 'Tech', path: '/1' },
@@ -27,8 +28,8 @@ const HeaderNavbarMenu: React.FC = () => {
         </ul>
         <button
           onClick={changeTheme}
-          className="bg-ta-svg mr-8 ml-4 hidden h-7 w-8 cursor-pointer items-center justify-center rounded-full transition-all active:scale-90 sm:flex"
-          aria-label="Toggle Theme"
+          className="bg-ta-svg ml-4 hidden h-7 w-8 cursor-pointer items-center justify-center rounded-full transition-all active:scale-90 sm:flex"
+          aria-label="toggle theme"
         >
           {theme === 'light' ? (
             <img className="px-2 py-3" src={dark} alt="dark-mode" />
@@ -36,6 +37,12 @@ const HeaderNavbarMenu: React.FC = () => {
             <img className="px-2 py-3" src={light} alt="light-mode" />
           )}
         </button>
+        <Link
+          to={'/timer'}
+          className="bg-ta-blue mr-8 ml-2 hidden h-7 w-8 cursor-pointer items-center justify-center rounded-full transition-all active:scale-90 sm:flex"
+        >
+          <img className="px-2 py-3" src={timer} alt="timer-mode" />
+        </Link>
       </div>
     </>
   );
