@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
 import cmUtils from '@/utils/cmUtils';
+import { TaTheme } from '@/types/types';
 
-type Theme = 'light' | 'dark';
-
-const getTheme = (): Theme => {
+const getTheme = (): TaTheme => {
   //페이지 초기 접근 시 다크모드 세팅
   if (cmUtils.isEmpty(window)) {
     return 'dark';
   }
 
   //로컬스토리지 기준 모드 세팅
-  const taTheme = localStorage.getItem('ta-theme') as Theme | null;
+  const taTheme = localStorage.getItem('ta-theme') as TaTheme | null;
   if (taTheme === 'light' || taTheme === 'dark') {
     return taTheme;
   }
@@ -22,7 +21,7 @@ const getTheme = (): Theme => {
 };
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState<Theme>(getTheme);
+  const [theme, setTheme] = useState<TaTheme>(getTheme);
 
   useEffect(() => {
     const root = window.document.documentElement;
