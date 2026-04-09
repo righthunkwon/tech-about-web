@@ -104,6 +104,7 @@ const Timer: React.FC<TimerProps> = ({
       </div>
 
       <div className="text-center">
+        {/* 타이머 테마 */}
         <div className="mb-8 flex justify-center gap-5">
           <button
             onClick={() => onThemeChange('blue')}
@@ -125,6 +126,7 @@ const Timer: React.FC<TimerProps> = ({
           />
         </div>
 
+        {/* 시간 */}
         <div className="text-ta-base-title text-6xl font-black tracking-tight tabular-nums transition-colors duration-500">
           {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
         </div>

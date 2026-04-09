@@ -85,6 +85,7 @@ const TimerPage: React.FC = () => {
       requestRef.current = requestAnimationFrame(animate);
     } else {
       setIsActive(false);
+      playBeep();
     }
   };
 
@@ -127,6 +128,50 @@ const TimerPage: React.FC = () => {
       }, 1200);
     } else {
       setIsActive(!isActive);
+    }
+  };
+
+  /*******************************************************************************
+    
+    [알림]
+    - 삐비비빅, 삐비비빅
+
+  /*******************************************************************************/
+  const playBeep = () => {
+    const audioCtx = new window.AudioContext();
+
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const repetitions = 2;
+    const beepsPerRep = 4;
+    const beepDuration = 0.08;
+    const beepGap = 0.05;
+    const groupGap = 0.4;
+
+    let startTime = audioCtx.currentTime;
+
+    for (let i = 0; i < repetitions; i++) {
+      for (let j = 0; j < beepsPerRep; j++) {
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(880, startTime);
+
+        gainNode.gain.setValueAtTime(0.3, startTime);
+        gainNode.gain.setValueAtTime(0, startTime + beepDuration);
+
+        oscillator.start(startTime);
+        oscillator.stop(startTime + beepDuration);
+
+        startTime += beepDuration + beepGap;
+      }
+      startTime += groupGap;
     }
   };
 
