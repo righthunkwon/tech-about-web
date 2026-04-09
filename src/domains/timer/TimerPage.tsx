@@ -134,7 +134,7 @@ const TimerPage: React.FC = () => {
   /*******************************************************************************
     
     [알림]
-    - 삐비비빅, 삐비비빅
+    - (삐비비빅, 삐비비빅) * 2
 
   /*******************************************************************************/
   const playBeep = () => {
@@ -144,34 +144,39 @@ const TimerPage: React.FC = () => {
       audioCtx.resume();
     }
 
-    const repetitions = 2;
-    const beepsPerRep = 4;
-    const beepDuration = 0.08;
-    const beepGap = 0.05;
+    const totalSets = 2;
+    const groupsPerSet = 2;
+    const beepsPerGroup = 4;
+    const beepDuration = 0.07;
+    const beepGap = 0.06;
     const groupGap = 0.4;
+    const setGap = 1.0;
 
     let startTime = audioCtx.currentTime;
 
-    for (let i = 0; i < repetitions; i++) {
-      for (let j = 0; j < beepsPerRep; j++) {
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
+    for (let s = 0; s < totalSets; s++) {
+      for (let i = 0; i < groupsPerSet; i++) {
+        for (let j = 0; j < beepsPerGroup; j++) {
+          const oscillator = audioCtx.createOscillator();
+          const gainNode = audioCtx.createGain();
 
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
+          oscillator.connect(gainNode);
+          gainNode.connect(audioCtx.destination);
 
-        oscillator.type = 'sine';
-        oscillator.frequency.setValueAtTime(880, startTime);
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(880, startTime);
 
-        gainNode.gain.setValueAtTime(0.3, startTime);
-        gainNode.gain.setValueAtTime(0, startTime + beepDuration);
+          gainNode.gain.setValueAtTime(0.3, startTime);
+          gainNode.gain.setValueAtTime(0, startTime + beepDuration);
 
-        oscillator.start(startTime);
-        oscillator.stop(startTime + beepDuration);
+          oscillator.start(startTime);
+          oscillator.stop(startTime + beepDuration);
 
-        startTime += beepDuration + beepGap;
+          startTime += beepDuration + beepGap;
+        }
+        startTime += groupGap;
       }
-      startTime += groupGap;
+      startTime += setGap;
     }
   };
 
