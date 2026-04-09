@@ -28,7 +28,7 @@ const HeaderDrawerMenu: React.FC<Props> = ({ open, setOpen }) => {
       <div
         className={`bg-ta-base fixed left-0 w-full shadow-lg transition-all duration-400 ${open ? 'top-15 opacity-100' : 'pointer-events-none top-15 -translate-y-2 opacity-0'}`}
       >
-        <ul className="flex flex-col border-t border-gray-100">
+        <ul className="flex flex-col">
           {MENU_ITEMS.map((item) => (
             <li key={item.id} className="ta-drawer-menu-item">
               <Link className="block w-full px-5 py-5" to={item.path}>
