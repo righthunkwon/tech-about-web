@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 
 @theme {
-  /*************************************************
+  /*******************************************************************************
     [색상]
     - 색상코드의 경우 소스단에 직접 코딩하는 것을 지양
     - 색이 바뀌지 않는 고정된 몇 요소에만 색상코드 직접 사용
-  *************************************************/
+  /*******************************************************************************/
   --color-ta-blue: #3182f6; /* 파란색 */
   --color-ta-blue-dark: #1b64da; /* 어두운 파란색 */
   --color-ta-blue-light: #51a2ff; /* 밝은 파란색 */
@@ -21,12 +21,13 @@
 }
 
 @theme {
-  /*************************************************
+  /*******************************************************************************
     [라이트모드]
     - 컴포넌트 기반으로 역할별로 분류
     - 메뉴, 버튼, 배경, 제목, 내용 등 
-  *************************************************/
+  *******************************************************************************/
   --color-ta-base: var(--color-ta-white); /* 배경 */
+  --color-ta-base-reverse: #212121;
   --color-ta-base-title: var(--color-ta-black); /* 제목텍스트 */
   --color-ta-base-content: var(--color-ta-black-light); /* 본문텍스트*/
 
@@ -37,11 +38,12 @@
   --color-ta-primary-content: #ffffff; /* 주요 색상 위 텍스트 (흰색) */
 }
 
-/*************************************************
+/*******************************************************************************
   [다크모드]
-*************************************************/
+*******************************************************************************/
 :root.dark {
   --color-ta-base: #212121;
+  --color-ta-base-reverse: var(--color-ta-white);
   --color-ta-base-title: var(--color-ta-white);
   --color-ta-base-content: #d1d6db;
 
@@ -56,9 +58,13 @@
 }
 
 @theme {
-  /*************************************************
+  /*******************************************************************************
+    [트랜지션]
+  *******************************************************************************/
+  --transition-ta-ease-in-out: 200ms ease-in-out;
+  /*******************************************************************************
     [애니메이션]
-  *************************************************/
+  *******************************************************************************/
   --animate-fade-in: fade-in 1.2s ease-in-out forwards;
   --animate-bounce-small: bounce-small 1.5s ease-in-out infinite;
   --animate-wiggle: wiggle 1s ease-in-out infinite;
@@ -107,9 +113,9 @@
 }
 
 @layer components {
-  /*************************************************
+  /*******************************************************************************
     [기본]
-  *************************************************/
+  *******************************************************************************/
   .ta-layout {
     @apply min-h-screen;
   }
@@ -122,23 +128,21 @@
       border-color 150ms ease-in-out;
   }
 
-  /*************************************************
+  /*******************************************************************************
     [메뉴]
-  *************************************************/
+  *******************************************************************************/
   .ta-nav-menu-item,
   .ta-drawer-menu-item {
-    @apply mx-1 my-auto block cursor-pointer rounded-lg px-4 py-2 text-sm font-normal whitespace-nowrap transition-all;
-    @apply hover:bg-gray-100;
-    color: var(--color-ta-base-content);
+    @apply text-ta-base-content mx-1 my-auto block cursor-pointer rounded-lg px-4 py-2 text-sm font-normal whitespace-nowrap transition-all hover:bg-gray-100;
   }
   .dark .ta-nav-menu-item:hover,
   .dark .ta-drawer-menu-item:hover {
-    background-color: var(--color-ta-surface);
+    @apply hover:bg-neutral-900;
   }
 
-  /*************************************************
+  /*******************************************************************************
     [버튼]
-  *************************************************/
+  *******************************************************************************/
   .ta-button-primary {
     @apply inline-block w-fit cursor-pointer rounded-lg px-4 py-2 sm:px-6 sm:py-2.5;
     @apply text-center text-base font-medium no-underline transition-all sm:text-lg;
@@ -158,17 +162,17 @@
     @apply text-center text-base font-medium no-underline transition-all sm:text-lg;
     border-color: var(--color-ta-divider);
     background-color: transparent;
-    color: var(--color-ta-primary);
+    color: var(--color-ta-base-title);
   }
   .ta-button-outline:hover {
-    border-color: var(--color-ta-primary);
+    border-color: var(--color-ta-divider);
     background-color: var(--color-ta-surface);
   }
   .ta-button-disabled {
     @apply pointer-events-none inline-block w-fit rounded-lg px-4 py-2 select-none sm:px-6 sm:py-2.5;
     @apply text-center text-base font-medium sm:text-lg;
     background-color: var(--color-ta-divider);
-    color: #ffffff;
-    opacity: 0.6;
+    color: var(--color-ta-base-content);
+    opacity: 0.9;
   }
 }
