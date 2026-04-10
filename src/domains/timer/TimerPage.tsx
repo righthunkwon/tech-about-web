@@ -11,6 +11,7 @@ const TimerPage: React.FC = () => {
   usePageTitle('타이머');
 
   const timerTime = 5;
+  // const timerTime = 60 * 25;
   const [timeLeft, setTimeLeft] = useState(timerTime);
   const [isActive, setIsActive] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
@@ -60,14 +61,16 @@ const TimerPage: React.FC = () => {
     - 애니메이션 실행 시 리렌더링을 방지하기 위해 useState가 아니라 useRef 사용
     
     - requestRef    : 실행 중인 애니메이션의 ID
-    - startTimeRef  : 시작을 누른 시점의 타임스탬프
-    - pausedTimeRef : 멈춤을 누른 시점의 남은시간
+    - startTimeRef  : 시작을 누른 시점의 타임스탬프를 관리하는 Ref
+    - pausedTimeRef : 멈춤을 누른 시점의 남은시간을 관리하는 Ref
+    - audioCtxRef   : 오디오 실행 관리하는 Ref
     - animate       : 화면이 갱신될 때마다 호출되는 함수
 
   /*******************************************************************************/
   const requestRef = useRef<number | undefined>(0);
   const startTimeRef = useRef<number | undefined>(0);
   const pausedTimeRef = useRef<number>(timerTime);
+  const audioCtxRef = useRef<AudioContext | null>(null);
 
   const animate = (time: number) => {
     // 시작시간이 없을 경우 현재시간을 시작점으로 지정
@@ -119,6 +122,11 @@ const TimerPage: React.FC = () => {
   };
 
   const toggleTimer = () => {
+    if (audioCtxRef.current && audioCtxRef.current.state !== 'closed') {
+      audioCtxRef.current.close();
+      audioCtxRef.current = null;
+    }
+
     if (timeLeft <= 0) {
       setIsResetting(true);
       resetTimer();
@@ -138,7 +146,12 @@ const TimerPage: React.FC = () => {
 
   /*******************************************************************************/
   const playBeep = () => {
+    if (audioCtxRef.current) {
+      audioCtxRef.current.close();
+    }
+
     const audioCtx = new window.AudioContext();
+    audioCtxRef.current = audioCtx;
 
     if (audioCtx.state === 'suspended') {
       audioCtx.resume();
@@ -181,7 +194,7 @@ const TimerPage: React.FC = () => {
   };
 
   return (
-    <Page className="bg-ta-base flex items-center justify-center p-6 transition-colors duration-500">
+    <Page className="bg-ta-base flex items-center justify-center p-6 transition-colors">
       <div className="flex flex-col items-center space-y-12">
         <Timer
           timeLeft={timeLeft}

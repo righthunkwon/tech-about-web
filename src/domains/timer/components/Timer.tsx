@@ -21,8 +21,9 @@ const Timer: React.FC<TimerProps> = ({
   const strokeWidth = center;
   const radius = center / 2;
   const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (timeLeft / totalTime) * circumference;
-
+  const minVisualLength = (0.02 / 360) * circumference;
+  const rawOffset = circumference - (timeLeft / totalTime) * circumference;
+  const offset = Math.min(rawOffset, circumference - minVisualLength);
   const displayTime = Math.ceil(timeLeft);
   const minutes = Math.floor(displayTime / 60);
   const seconds = displayTime % 60;
